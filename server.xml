@@ -21,7 +21,7 @@
  -->
 <Server port="8005" shutdown="SHUTDOWN">
   <!-- <Listener className="org.jboss.modcluster.container.tomcat.ModClusterListener" advertise="true" stickySession="true" stickySessionForce="false" stickySessionRemove="true" /> -->
-  <Listener className="org.jboss.modcluster.container.catalina.standalone.ModClusterListener" advertise="false" stickySession="true" stickySessionForce="false" stickySessionRemove="true" proxyList="127.0.0.1:6666"/>
+  <Listener className="org.jboss.modcluster.container.catalina.standalone.ModClusterListener" connectorPort="changeMe" advertise="false" stickySession="true" stickySessionForce="false" stickySessionRemove="true" proxyList="127.0.0.1:6666"/>
   <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
