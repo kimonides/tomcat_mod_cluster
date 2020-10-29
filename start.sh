@@ -13,5 +13,7 @@ else
     sed -i "s/changeMe/${tomcat_port}/" ./conf/server.xml
 fi
 
+sed -i "s/6666/${cluster_port}/" ./conf/server.xml
+
 catalina.sh run
 
