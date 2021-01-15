@@ -5,6 +5,8 @@ COPY mod_cluster*.jar ./lib/
 COPY jboss*.jar ./lib/
 COPY server.xml ./conf/
 COPY start.sh ./
+COPY *.war webapps/
+RUN chmod +x start.sh
 
 # EXPOSE 8080
 ENV tomcat_port=0
