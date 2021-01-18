@@ -4,8 +4,7 @@ WORKDIR /usr/local/tomcat
 COPY mod_cluster*.jar ./lib/
 COPY jboss*.jar ./lib/
 COPY server.xml ./conf/
-COPY start.sh ./
-COPY *.war webapps/
+COPY start.sh *.war ./
 RUN chmod +x start.sh
 
 # EXPOSE 8080
