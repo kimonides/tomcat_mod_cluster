@@ -1,17 +1,19 @@
 #!/bin/bash
 
-lower_port=8000
-upper_port=9000
+# lower_port=8000
+# upper_port=9000
 
 
-for (( port = lower_port ; port <= upper_port ; port++ )); do
-    if [[ $(ss -tulpn | grep $port) ]]; then
-        echo "Port $port is used"
-    else
-        tomcat_shutdown_port=$port
-        break
-    fi
-done
+# for (( port = lower_port ; port <= upper_port ; port++ )); do
+#     if [[ $(ss -tulpn | grep $port) ]]; then
+#         echo "Port $port is used"
+#     else
+#         tomcat_shutdown_port=$port
+#         break
+#     fi
+# done
+
+tomcat_shutdown_port=0
 
 
 sed -i "s/8080/${tomcat_port}/" ./conf/server.xml
