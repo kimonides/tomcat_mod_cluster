@@ -14,9 +14,6 @@ for (( port = lower_port ; port <= upper_port ; port++ )); do
 done
 
 
-
-
-
 sed -i "s/8080/${tomcat_port}/" ./conf/server.xml
 
 sed -i "s/8005/${tomcat_shutdown_port}/" ./conf/server.xml
