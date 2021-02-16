@@ -13,6 +13,7 @@ Run the image with:
 docker run --network=host -e tomcat_port=[port1] -e cluster_port=[port3] [image]
 Or
 docker run --network=host -e tomcat_ajp_port=[port1] -e cluster_port=[port3] [image]
+# You can also add the variable -e tomcat_shutdown_port=true if u want to have a shutdown port
 ```
 
 To load webapps into the container:
