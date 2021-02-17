@@ -4,9 +4,9 @@ Start Apache Httpd with mod cluster enabled.
 Configure the mod cluster listener in server.xml(line 24) if it's running on a port other than 6666.  
 Build the image with:
 ```
-docker build . -t <TAG> --build-arg VERSION=<mod_cluster_version>
+sudo ./build.sh <mod_cluster_version> <image_tag> # needs sudo to delete the local temp maven repo
 # Example
-# docker build . -t kimonides/tomcat_mod_cluster --build-arg VERSION=1.4.1
+# sudo ./build.sh 1.4.1 kimonides/tomcat_mod_cluster
 ```
 Run the image with:  
 ```
