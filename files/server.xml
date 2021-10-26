@@ -128,10 +128,7 @@
          analyzes the HTTP headers included with the request, and passes them
          on to the appropriate Host (virtual host).
          Documentation at /docs/config/engine.html -->
-
-    <!-- You should set jvmRoute to support load-balancing via AJP ie :
-    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
-    -->
+    
     <Engine name="Catalina" defaultHost="localhost">
 
       <!--For clustering, please take a look at documentation at:
