@@ -31,5 +31,13 @@ fi
 
 sed -i "s/6666/${cluster_port}/" ./conf/server.xml
 
+# remplace the Engine by Engine JVMRoute="${jvmroute}"
+if [ -z "${jvmroute}" ]; then
+  echo "JVMRoute with be automaticly generated"
+else
+  echo "Using $jvmroute as JVMRoute"
+  sed -i "/Engine name/c <Engine name=\"Catalina\" defaultHost=\"localhost\" jvmRoute=\"${jvmroute}\">" ./conf/server.xml
+fi
+
 catalina.sh run
 

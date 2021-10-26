@@ -1,16 +1,17 @@
 #!/bin/bash
 
+VERSION=${1:-1.4.2.Final}
+TAG=${2:-docker.io/${USER}/tomcat_mod_cluster}
+
 if [ $# -lt 2 ] 
 then
     printf "No argument given.\n\nusage: ./build.sh <mod_cluster_version> <image_tag>\n\nexample: ./build.sh 1.4.1 tomcat_mod_cluster\n\n"
-    exit -1
+    printf "Using VERSION: $VERSION\n\n"
+    printf "Using tag: $TAG\n\n"    
 fi
 
-VERSION=$1
-TAG=$2
-
 mvn dependency:get -Dmaven.repo.local=./.tmp \
-    -Dartifact=org.jboss.mod_cluster:mod_cluster-container-tomcat85:$VERSION.Final \
+    -Dartifact=org.jboss.mod_cluster:mod_cluster-container-tomcat85:$VERSION \
     -DrepoUrl=https://repository.jboss.org/nexus/content/repositories/public/
 
 
