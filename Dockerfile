@@ -11,6 +11,7 @@ ENV tomcat_shutdown_port=0
 ENV tomcat_ajp_port=0
 ENV cluster_port=6666
 ENV jvmroute=""
+ENV tomcat_address=""
 
 CMD ["./start.sh"]
 
