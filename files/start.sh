@@ -17,8 +17,6 @@ fi
 
 sed -i "s/8080/${tomcat_port}/" ./conf/server.xml
 
-sed -i "s/8005/${tomcat_shutdown_port}/" ./conf/server.xml
-
 sed -i "s/8009/${tomcat_ajp_port}/" ./conf/server.xml
 
 mv  *.war webapps/ || true
@@ -30,6 +28,29 @@ else
 fi
 
 sed -i "s/6666/${cluster_port}/" ./conf/server.xml
+
+# remplace the Engine by Engine JVMRoute="${jvmroute}"
+if [ -z "${jvmroute}" ]; then
+  echo "JVMRoute with be automaticly generated"
+else
+  echo "Using $jvmroute as JVMRoute"
+  sed -i "/Engine name/c <Engine name=\"Catalina\" defaultHost=\"localhost\" jvmRoute=\"${jvmroute}\">" ./conf/server.xml
+fi
+
+# add tomcat_address in case
+if [ -z "${tomcat_address}" ]; then
+  echo "tomcat_address not configurated"
+else
+  echo "Using $tomcat_address as address"
+  sed -i "/<Connector/a address=\"${tomcat_address}\"" ./conf/server.xml
+  sed -i "/Server port/c <Server port=\"8005\" shutdown=\"SHUTDOWN\" address=\"${tomcat_address}\">" ./conf/server.xml
+fi
+
+# not sure that changing port and address makes sense... but just in case ;-)
+# to use for example:
+# echo "SHUTDOWN" | nc 127.0.0.2 8005
+sed -i "s/8005/${tomcat_shutdown_port}/" ./conf/server.xml
+
 
 catalina.sh run
 
